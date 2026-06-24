@@ -40,17 +40,6 @@ const App = () => {
       easing: 'ease-in-out',
     });
     logger.debug('AOS initialized with duration 1200 and ease-in-out easing');
-
-    // Tidio Chatbot Integration
-    const script = document.createElement('script');
-    script.src = "//code.tidio.co/imt7jsbhkyytldtyra77phd3gnnt0fsu.js";
-    script.async = true;
-    document.body.appendChild(script);
-
-    // Cleanup function to remove script if the component unmounts
-    return () => {
-      document.body.removeChild(script);
-    };
   }, []);
 
   return (

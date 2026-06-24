@@ -1,3 +1,7 @@
+.services {
+  padding-top: 11rem;
+}
+
 /* Ensure the .service-content covers the full height of its container */
 .service-content {
   position: relative;
@@ -51,4 +55,10 @@
 /* Hover effect to show the description */
 .service-content:hover p {
   opacity: 1; /* Make text visible on hover */
+}
+
+@media (max-width: 768px) {
+  .services {
+    padding-top: 8rem;
+  }
 }
