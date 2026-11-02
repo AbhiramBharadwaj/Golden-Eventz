@@ -1,19 +1,17 @@
-import React, { useRef, useEffect } from "react";
-import { gsap } from "gsap";
-import { motion } from "framer-motion";
-import './HeroCard.css'; // Ensure you have a CSS file for custom styles
+import useNearViewport from '../../hooks/useNearViewport';
+import OptimizedImage from '../OptimizedImage';
 
-// Dummy image imports - replace these with your actual image paths
-import MusicEvent from "../../assets/OurWorkPagePhotos/32.png";
-import CorporateEvent from "../../assets/OurWorkPagePhotos/33.png";
-import SpecialEvent from "../../assets/OurWorkPagePhotos/34.png";
-import SportsEvent from "../../assets/sports-event.png";
-import BridalMakeup from "../../assets/OurWorkPagePhotos/27.png";
-import PhoAndVideo from "../../assets/OurWorkPagePhotos/28.png";
-import SangeethNight from "../../assets/OurWorkPagePhotos/29.png";
-import Catering from "../../assets/OurWorkPagePhotos/30.png";
-import SoundsAndLights from "../../assets/gifs/3.gif";
-import HeroBg from "../../assets/background-flip3.jpeg";
+import './HeroCard.css';
+
+import MusicEvent from "../../assets/OurWorkPagePhotos/32.webp";
+import CorporateEvent from "../../assets/OurWorkPagePhotos/33.webp";
+import SpecialEvent from "../../assets/OurWorkPagePhotos/34.webp";
+import BridalMakeup from "../../assets/OurWorkPagePhotos/27.webp";
+import PhoAndVideo from "../../assets/OurWorkPagePhotos/28.webp";
+import SangeethNight from "../../assets/OurWorkPagePhotos/29.webp";
+import Catering from "../../assets/OurWorkPagePhotos/30.webp";
+import SoundsAndLights from "../../assets/gifs/3.webp";
+import HeroBg from "../../assets/background-flip3.webp";
 
 const WhatWeDoData = [
   {
@@ -75,55 +73,7 @@ const bubbleShapes = [
 ];
 
 const HeroCard = () => {
-  const cardsRef = useRef([]);
-
-  useEffect(() => {
-    const cards = cardsRef.current;
-    cards.forEach((card) => {
-      if (card) {
-        card.addEventListener("mouseenter", () => {
-          gsap.to(card, {
-            y: -10,
-            boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)",
-            duration: 0.3, // Adjusted duration for smooth animation
-            ease: "power1.out", // Smooth ease
-          });
-        });
-        card.addEventListener("mouseleave", () => {
-          gsap.to(card, {
-            y: 0,
-            boxShadow: "0 0 0 rgba(0, 0, 0, 0)",
-            duration: 0.3, // Adjusted duration for smooth animation
-            ease: "power1.out", // Smooth ease
-          });
-        });
-      }
-    });
-
-    return () => {
-      cards.forEach((card) => {
-        if (card) {
-          card.removeEventListener("mouseenter", () => {
-            gsap.to(card, {
-              y: -10,
-              boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)",
-              duration: 0.3,
-              ease: "power1.out",
-            });
-          });
-          card.removeEventListener("mouseleave", () => {
-            gsap.to(card, {
-              y: 0,
-              boxShadow: "0 0 0 rgba(0, 0, 0, 0)",
-              duration: 0.3,
-              ease: "power1.out",
-            });
-          });
-        }
-      });
-    };
-  }, []);
-
+  const { ref: backgroundRef, isNear } = useNearViewport();
   const splitText = (text) => {
     return text.split("").map((char, index) => (
       <span key={index} className={`letter inline-block ${char === ' ' ? 'mx-1' : ''}`}>
@@ -134,14 +84,15 @@ const HeroCard = () => {
 
   return (
     <section
+      ref={backgroundRef}
       className="bg-black text-white py-16 relative"
       style={{
         backgroundImage: `
           radial-gradient(circle at 20% 20%, rgba(88, 99, 191, 0.14), transparent 38%),
           radial-gradient(circle at 80% 25%, rgba(233, 118, 97, 0.14), transparent 32%),
           radial-gradient(circle at 50% 80%, rgba(143, 92, 220, 0.12), transparent 36%),
-          linear-gradient(180deg, rgba(3, 3, 3, 0.92), rgba(3, 3, 3, 0.95)),
-          url(${HeroBg})
+          linear-gradient(180deg, rgba(3, 3, 3, 0.92), rgba(3, 3, 3, 0.95))
+          ${isNear ? `, url(${HeroBg})` : ""}
         `,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -181,18 +132,16 @@ const HeroCard = () => {
         </p>
         <div className="row">
           {WhatWeDoData.map((data, index) => (
-            <motion.div
+            <div
               key={index}
               data-aos="fade-up"
               data-aos-delay={data.aosDelay}
               className="col-6 col-md-4 col-lg-3 mb-4 d-flex align-items-stretch"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
             >
-              <div className="card bg-dark text-white h-100" ref={(el) => cardsRef.current[index] = el}>
-                <img
+              <div className="card bg-dark text-white h-100">
+                <OptimizedImage
                   src={data.image}
+                  sizes="(max-width: 767px) 50vw, (max-width: 991px) 33vw, 25vw"
                   alt={data.title}
                   className="card-img-top"
                   style={{ filter: 'brightness(1.2)' }}
@@ -202,7 +151,7 @@ const HeroCard = () => {
                   <p className="card-text flex-grow-1">{data.description}</p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

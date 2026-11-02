@@ -1,5 +1,5 @@
 /* Container for projects */
-.container {
+.our-work-page .container {
     width: 100%;
     max-width: 1200px;
     margin: auto;
@@ -7,117 +7,117 @@
   }
  
   /* Grid adjustments */
-  .bento-grid {
+  .our-work-page .bento-grid {
     display: grid;
     grid-template-columns: repeat(1, 1fr); /* Default mobile view: 1 column */
     gap: 20px;
   }
   
   @media (min-width: 768px) { /* Adjustments for tablets */
-    .bento-grid {
+    .our-work-page .bento-grid {
       grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
     }
   }
   
   @media (min-width: 1024px) { /* Adjustments for desktop */
-    .bento-grid {
+    .our-work-page .bento-grid {
       grid-template-columns: repeat(4, 1fr); /* 4 columns for desktop */
     }
   }
   
   /* Specific item size adjustments */
-  .bento-item {
+  .our-work-page .bento-item {
     transition: transform 0.3s ease;
   }
   
-  .bento-item:hover {
+  .our-work-page .bento-item:hover {
     transform: scale(1.05); /* Enhancing hover effect */
   }
   
-  .bento-item.col-span-2 {
+  .our-work-page .bento-item.col-span-2 {
     grid-column: span 2; /* Spanning two columns */
   }
   
-  .bento-item.row-span-2 {
+  .our-work-page .bento-item.row-span-2 {
     grid-row: span 2; /* Spanning two rows */
   }
 
-  img {
+  .our-work-page img {
     width: 100%; /* Full width of the container */
     height: auto; /* Maintain aspect ratio */
     object-fit: cover; /* Cover the area without distorting the image */
   }
   
   /* Ensuring that images do not overlap */
-  .service-image {
+  .our-work-page .service-image {
     transition: transform 0.3s ease-in-out;
     display: block; /* Ensures images are not inline */
     margin: 0 auto; /* Centering images within their container */
   }
 
-  .card-img-top {
+  .our-work-page .card-img-top {
     transition: transform 0.3s ease-in-out;  /* Smooth transition for zoom effect */
   }
   
-  .card-img-top:hover {
+  .our-work-page .card-img-top:hover {
     transform: scale(1.1);  /* Scale up image by 10% on hover */
   }
   
-  .card {
+  .our-work-page .card {
     overflow: hidden;  /* Prevents the image from overflowing the card on zoom */
   }
   
   /* Additional styling for the overall page and cards */
-  .container {
+  .our-work-page .container {
     padding: 2rem 0;
   }
   
-  .card {
+  .our-work-page .card {
     background-color: #fff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border: none;
     border-radius: 0.5rem;
   }
   
-  .card-body {
+  .our-work-page .card-body {
     padding: 1rem;
   }
   
-  .card-title {
+  .our-work-page .card-title {
     margin-bottom: 0.5rem;
     font-size: 1.25rem;
     font-weight: bold;
   }
   
-  .card-text {
+  .our-work-page .card-text {
     font-size: 1rem;
     color: #666;
   }
 
   /* OurWork.css */
-.grid {
+.our-work-page .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-auto-rows: minmax(100px, auto);
   grid-gap: 1rem;
 }
 
-.bento-item {
+.our-work-page .bento-item {
   overflow: hidden;
 }
 
-.card-img-top {
+.our-work-page .card-img-top {
   width: 100%;
   height: 200px; /* Adjust based on your design needs */
   object-fit: cover;
   transition: transform 0.3s ease-in-out;
 }
 
-.card-img-top:hover {
+.our-work-page .card-img-top:hover {
   transform: scale(1.1);
 }
 
-.card {
+.our-work-page .card {
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -125,83 +125,83 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.card-body {
+.our-work-page .card-body {
   padding: 1rem;
 }
 
-.card-title {
+.our-work-page .card-title {
   font-size: 1.25rem;
 }
 
-.card-text {
+.our-work-page .card-text {
   color: #666;
 }
 
-.bento-grid {
+.our-work-page .bento-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: minmax(100px, auto);
   gap: 16px;
 }
 
-.bento-item {
+.our-work-page .bento-item {
   transition: transform 0.3s ease-in-out;
 }
 
-.bento-item.large {
+.our-work-page .bento-item.large {
   grid-column: span 2;
   grid-row: span 2;
 }
 
-.bento-item:hover {
+.our-work-page .bento-item:hover {
   transform: scale(1.05);
 }
 
-.bento-grid {
+.our-work-page .bento-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: minmax(100px, auto);
   gap: 16px;
 }
 
-.bento-item {
+.our-work-page .bento-item {
   transition: transform 0.3s ease-in-out;
 }
 
-.bento-item.large {
+.our-work-page .bento-item.large {
   grid-column: span 2;
   grid-row: span 2;
 }
 
-.bento-item:hover {
+.our-work-page .bento-item:hover {
   transform: scale(1.05);
 }
 
 /* OurWork.css */
 @media (max-width: 768px) {
-  .card-img-top {
+  .our-work-page .card-img-top {
     height: auto;
   }
 
-  .card-title {
+  .our-work-page .card-title {
     font-size: 1.2rem;
   }
 
-  .card-text {
+  .our-work-page .card-text {
     font-size: 0.9rem;
   }
 }
 
 @media (max-width: 576px) {
-  .text-4xl {
+  .our-work-page .text-4xl {
     font-size: 2rem;
   }
 
-  .md\\:text-7xl {
+  .our-work-page .md\\:text-7xl {
     font-size: 3rem;
   }
 
-  .container {
+  .our-work-page .container {
     padding-left: 15px;
     padding-right: 15px;
   }

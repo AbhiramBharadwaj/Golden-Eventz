@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { db } from '../firebase';  // Adjust this path if your firebase.js is located differently
-import { collection, addDoc } from 'firebase/firestore';
-import BackgroundImage from '../assets/Location1.png';
-import Location from '../assets/Location.png';
-import { FaInstagram, FaWhatsapp, FaYoutube, FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa"; // Added Facebook, Twitter, LinkedIn icons
-import Lottie from 'react-lottie';
+import OptimizedImage from '../components/OptimizedImage';
+import { lazy, Suspense, useState, useEffect } from 'react';
+import BackgroundImage from '../assets/Location1.webp';
+import Location from '../assets/Location.webp';
+import { FaInstagram, FaWhatsapp, FaYoutube, FaFacebook, FaLinkedin } from "react-icons/fa"; // Added Facebook, Twitter, LinkedIn icons
 import '../pages/Contact.css'; // Ensure your CSS is properly linked
 import animationData from '../assets/Animation/Animation.json';
 import { setMeta } from '../utils/meta';
+
+const Lottie = lazy(() => import('react-lottie'));
 
 const Contact = () => {
   const [showMessage, setShowMessage] = useState(false);
@@ -38,6 +38,10 @@ const Contact = () => {
     const message = event.target.elements.message.value;
  
     try {
+      const [{ db }, { collection, addDoc }] = await Promise.all([
+        import('../firebase'),
+        import('firebase/firestore'),
+      ]);
       await addDoc(collection(db, "contacts"), {
         name,
         contactNumber,
@@ -68,12 +72,14 @@ const Contact = () => {
 
   return (
     <div
-      className="min-h-screen bg-cover bg-center flex items-center justify-center pt-16" // Added pt-16 for padding at the top
+      className="contact-page min-h-screen bg-cover bg-center flex items-center justify-center pt-16" // Added pt-16 for padding at the top
       style={{ backgroundImage: `url(${BackgroundImage})` }}
     >
       {isSubmitting && (
         <div className="absolute z-50 w-32 h-32">
-          <Lottie options={defaultOptions} />
+          <Suspense fallback={<div role="status">Sending message…</div>}>
+            <Lottie options={defaultOptions} />
+          </Suspense>
         </div>
       )}
       {showMessage && (
@@ -122,7 +128,7 @@ const Contact = () => {
             <div className="mt-8">
               <h3 className="text-xl font-semibold mb-4">Find Us Here</h3>
               <a href="https://www.google.com/maps/dir/..." target="_blank" rel="noopener noreferrer">
-                <img src={Location} alt="Map" className="w-full h-64 object-cover rounded-md"/>
+                <OptimizedImage src={Location} alt="Map" className="w-full h-64 object-cover rounded-md"/>
               </a>
               <p className="text-blue-500 hover:underline mt-2">Click on the image to get the Google Maps Location</p>
             </div>

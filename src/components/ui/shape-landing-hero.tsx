@@ -1,8 +1,7 @@
 "use client";
 
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Circle } from "lucide-react";
-import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 function ElegantShape({
@@ -20,9 +19,10 @@ function ElegantShape({
   rotate?: number;
   gradient?: string;
 }) {
+  const reduceMotion = useReducedMotion();
   return (
     <motion.div
-      initial={{
+      initial={reduceMotion ? false : {
         opacity: 0,
         y: -150,
         rotate: rotate - 15,
@@ -41,9 +41,7 @@ function ElegantShape({
       className={cn("absolute", className)}
     >
       <motion.div
-        animate={{
-          y: [0, 15, 0],
-        }}
+        animate={reduceMotion ? { y: 0 } : { y: [0, 15, 0] }}
         transition={{
           duration: 12,
           repeat: Number.POSITIVE_INFINITY,
@@ -149,7 +147,7 @@ function HeroGeometric({
           <motion.div
             custom={0}
             variants={fadeUpVariants}
-            initial="hidden"
+            initial={false}
             animate="visible"
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.08] mb-8 md:mb-12"
           >
@@ -162,7 +160,7 @@ function HeroGeometric({
           <motion.div
             custom={1}
             variants={fadeUpVariants}
-            initial="hidden"
+            initial={false}
             animate="visible"
           >
             <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 tracking-tight leading-tight">
@@ -183,7 +181,7 @@ function HeroGeometric({
           <motion.div
             custom={2}
             variants={fadeUpVariants}
-            initial="hidden"
+            initial={false}
             animate="visible"
           >
             <p className="text-base sm:text-lg md:text-lg text-white/40 mb-8 leading-relaxed font-light tracking-wide max-w-xl mx-auto px-4">

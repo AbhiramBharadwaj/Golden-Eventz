@@ -1,4 +1,4 @@
-.message-box {
+.contact-page .message-box {
     position: fixed;
     top: 50%; /* Center vertically */
     left: 50%; /* Center horizontally */
@@ -9,20 +9,20 @@
     width: auto;
     text-align: center;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    animation: fadeInOut 3s ease-in-out;
+    animation: contact-page-fadeInOut 3s ease-in-out;
   }
   
-  @keyframes fadeInOut {
+  @keyframes contact-page-fadeInOut {
     0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
     10%, 90% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
   }
   
-  .success {
+  .contact-page .success {
     background-color: #a4d0f4; /* Green for success */
     color: white;
   }
   
-  .error {
+  .contact-page .error {
     background-color: #f44336; /* Red for error */
     color: white;
   }
@@ -30,24 +30,24 @@
   /* Contact.css */
 
 /* General styles for the page */
-.services {
+.contact-page .services {
   padding: 20px;
   background-color: #fefefe;
 }
 
 /* Animation for input fields and textarea on focus */
-input[type="text"], input[type="email"], textarea {
+.contact-page input[type="text"], .contact-page input[type="email"], .contact-page textarea {
   transition: all 0.3s ease-in-out;
   border: 2px solid transparent; /* Ensures the border size doesn't change on focus */
 }
 
-input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+.contact-page input[type="text"]:focus, .contact-page input[type="email"]:focus, .contact-page textarea:focus {
   transform: scale(1.05); /* Slightly enlarges the input field */
   border-color: #3182ce; /* Changes border color on focus */
 }
 
 /* Styles and animations for message box */
-.message-box {
+.contact-page .message-box {
   position: absolute;
   top: 5%; /* Visible near the top of the viewport */
   left: 50%;
@@ -59,17 +59,17 @@ input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
   text-align: center;
   width: 80%; /* Ensures it doesn't span the entire width of the screen */
   opacity: 0; /* Starts out invisible */
-  animation: fadeIn 1s forwards; /* Animation to fade in the message */
+  animation: contact-page-fadeIn 1s forwards; /* Animation to fade in the message */
 }
 
-@keyframes fadeIn {
+@keyframes contact-page-fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
 /* Additional responsive styles for mobile devices */
 @media (max-width: 768px) {
-  .message-box {
+  .contact-page .message-box {
     top: 20%; /* Lower position on mobile for better visibility */
   }
 }

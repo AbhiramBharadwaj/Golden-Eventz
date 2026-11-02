@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import OptimizedImage from '../components/OptimizedImage';
+import { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Tab, Row, Col, Nav } from 'react-bootstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { setMeta } from '../utils/meta';
 
 // Import images
-import PlaceholderImage from '../assets/OurWorkPagePhotos/35.png';
-import PlaceholderImage1 from '../assets/OurWorkPagePhotos/36.png';
-import PlaceholderImage2 from '../assets/OurWorkPagePhotos/27.png';
-import PlaceholderImage3 from '../assets/OurWorkPagePhotos/28.png';
-import PlaceholderImage4 from '../assets/OurWorkPagePhotos/37.png';
+import PlaceholderImage from '../assets/OurWorkPagePhotos/35.webp';
+import PlaceholderImage1 from '../assets/OurWorkPagePhotos/36.webp';
+import PlaceholderImage2 from '../assets/OurWorkPagePhotos/27.webp';
+import PlaceholderImage3 from '../assets/OurWorkPagePhotos/28.webp';
+import PlaceholderImage4 from '../assets/OurWorkPagePhotos/37.webp';
 
 const About = () => {
   const [activeTab, setActiveTab] = useState('mission');
@@ -107,7 +108,7 @@ const About = () => {
                   <Tab.Content>
                     <Tab.Pane eventKey={activeTab}>
                       <div className="card mb-5 shadow bg-white custom-tab-content">
-                        <img src={contents[activeTab].image} alt={contents[activeTab].title} className="img-fluid mb-4" style={{ maxWidth: '100%', height: 'auto' }} />
+                        <OptimizedImage src={contents[activeTab].image} alt={contents[activeTab].title} className="img-fluid mb-4" style={{ maxWidth: '100%', height: 'auto' }} />
                         <p>{contents[activeTab].description}</p>
                       </div>
                     </Tab.Pane>

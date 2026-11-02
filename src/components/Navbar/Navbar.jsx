@@ -1,12 +1,11 @@
-import React, { useMemo, useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import Logo from '../../assets/logo.png';
+import { useMemo, useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import Logo from '../../assets/logo.webp';
 import './Navbar.css';
 import { Home, Briefcase, Phone, Info, FileText, Newspaper, HelpCircle } from 'lucide-react';
 import { NavBar } from '../ui/tubelight-navbar';
 
 const Navbar = () => {
-  const location = useLocation();
   const navItems = useMemo(() => [
     { name: 'Home', url: '/', icon: Home },
     { name: 'Our Work', url: '/our-work', icon: Briefcase },
@@ -41,7 +40,7 @@ const Navbar = () => {
           className="navbar-brand md:flex items-center gap-2 absolute left-3"
           style={{ textDecoration: 'none', color: 'white', fontFamily: 'Inter, sans-serif', fontWeight: 700 }}
         >
-          <img src={Logo} alt="Logo" className="logo me-2" />
+          <img src={Logo} alt="Golden Eventz" width="72" height="72" decoding="async" className="logo me-2" />
         </Link>
         <div className="flex-1 flex justify-center">
           <div className="max-w-4xl w-full flex justify-center">

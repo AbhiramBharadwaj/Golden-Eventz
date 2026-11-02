@@ -1,14 +1,15 @@
-import React, { useRef, useEffect } from 'react';
+import OptimizedImage from '../components/OptimizedImage';
+import { useRef, useEffect } from 'react';
 import { ContainerScroll } from '../components/ContainerScroll'; // Assuming this handles some scrolling animations or visibility effects
 import '../pages/Services.css';
 import '../assets/fonts/fonts.css';
-import Image1 from "../assets/OurWorkPagePhotos/10.png";
-import Image2 from "../assets/OurWorkPagePhotos/Our_1.png";
-import Image3 from "../assets/OurWorkPagePhotos/23.png";
-import Image4 from "../assets/OurWorkPagePhotos/26.png";
-import Image5 from "../assets/OurWorkPagePhotos/18.png";
-import Image6 from "../assets/OurWorkPagePhotos/20.png";
-import Image7 from "../assets/OurWorkPagePhotos/21.png";
+import Image1 from "../assets/OurWorkPagePhotos/10.webp";
+import Image2 from "../assets/OurWorkPagePhotos/Our_1.webp";
+import Image3 from "../assets/OurWorkPagePhotos/23.webp";
+import Image4 from "../assets/OurWorkPagePhotos/26.webp";
+import Image5 from "../assets/OurWorkPagePhotos/18.webp";
+import Image6 from "../assets/OurWorkPagePhotos/20.webp";
+import Image7 from "../assets/OurWorkPagePhotos/21.webp";
 import { setMeta } from '../utils/meta';
 
 const servicesData = [
@@ -67,7 +68,7 @@ const Services = () => {
         {servicesData.map((service, index) => (
           <ContainerScroll key={index} titleComponent={<h3 className="service-title">{service.title}</h3>}>
             <div className="service-content">
-              <img src={service.image} alt={service.title} className="service-image" />
+              <OptimizedImage src={service.image} sizes="(max-width: 767px) 100vw, 80vw" alt={service.title} className="service-image" />
               <p>{service.description}</p>
             </div>
           </ContainerScroll>

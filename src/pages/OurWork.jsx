@@ -1,16 +1,17 @@
-import React, { useEffect } from "react";
+import OptimizedImage from '../components/OptimizedImage';
+import { useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { motion } from "framer-motion";
-import Image1 from "../assets/OurWorkPagePhotos/10.png";
-import Image2 from "../assets/OurWorkPagePhotos/3.png";
-import Image3 from "../assets/OurWorkPagePhotos/11.png";
-import Image4 from "../assets/OurWorkPagePhotos/2.png";
-import Image5 from "../assets/OurWorkPagePhotos/12.png";
-import Image6 from "../assets/OurWorkPagePhotos/15.png";
-import Image7 from "../assets/OurWorkPagePhotos/14.png";
-import Image8 from "../assets/OurWorkPagePhotos/4.png";
-import Image9 from "../assets/OurWorkPagePhotos/16.png";
-import Image10 from "../assets/OurWorkPagePhotos/38.png";
+import Image1 from "../assets/OurWorkPagePhotos/10.webp";
+import Image2 from "../assets/OurWorkPagePhotos/3.webp";
+import Image3 from "../assets/OurWorkPagePhotos/11.webp";
+import Image4 from "../assets/OurWorkPagePhotos/2.webp";
+import Image5 from "../assets/OurWorkPagePhotos/12.webp";
+import Image6 from "../assets/OurWorkPagePhotos/15.webp";
+import Image7 from "../assets/OurWorkPagePhotos/14.webp";
+import Image8 from "../assets/OurWorkPagePhotos/4.webp";
+import Image9 from "../assets/OurWorkPagePhotos/16.webp";
+import Image10 from "../assets/OurWorkPagePhotos/38.webp";
 
 import '../pages/OurWork.css';
 import { setMeta } from "../utils/meta";
@@ -132,7 +133,7 @@ const OurWork = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8 pt-1">
+    <div className="our-work-page min-h-screen bg-gray-100 p-8 pt-1">
       <LampContainer>
         <motion.h1
           initial={{ opacity: 0.5, y: 100 }}
@@ -153,7 +154,7 @@ const OurWork = () => {
           {projects.map((project, index) => (
             <div key={index} className="col mb-4">
               <div className="card h-100">
-                <img src={project.image} alt={project.title} className="card-img-top" />
+                <OptimizedImage src={project.image} alt={project.title} className="card-img-top" />
                 <div className="card-body">
                   <h5 className="card-title">{project.title}</h5>
                   <p className="card-text">{project.description}</p>

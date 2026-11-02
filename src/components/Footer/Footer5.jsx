@@ -1,4 +1,4 @@
-import React from "react";
+import useNearViewport from '../../hooks/useNearViewport';
 import "./Footer5.css";
 import { FaInstagram, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { HiLocationMarker } from "react-icons/hi";
@@ -6,7 +6,7 @@ import { MdCall, MdMessage } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
-import HeroBg from "../../assets/background-flip3.jpeg";
+import HeroBg from "../../assets/background-flip3.webp";
 
 const footerBubbles = [
   { width: 520, height: 140, rotate: 12, gradient: "linear-gradient(90deg, rgba(99,102,241,0.15), transparent)", top: "10%", left: "-10%" },
@@ -17,6 +17,7 @@ const footerBubbles = [
 ];
 
 const Footer5 = () => {
+  const { ref: backgroundRef, isNear } = useNearViewport();
 
   const scrollToTop = () => {
     document.body.scrollTop = 0; // For Safari
@@ -24,14 +25,15 @@ const Footer5 = () => {
   
   return (
     <div
+      ref={backgroundRef}
       className="relative text-white overflow-hidden"
       style={{
         backgroundImage: `
           radial-gradient(circle at 20% 20%, rgba(88, 99, 191, 0.12), transparent 38%),
           radial-gradient(circle at 80% 25%, rgba(233, 118, 97, 0.12), transparent 32%),
           radial-gradient(circle at 50% 80%, rgba(143, 92, 220, 0.1), transparent 36%),
-          linear-gradient(180deg, rgba(3, 3, 3, 0.95), rgba(3, 3, 3, 0.97)),
-          url(${HeroBg})
+          linear-gradient(180deg, rgba(3, 3, 3, 0.95), rgba(3, 3, 3, 0.97))
+          ${isNear ? `, url(${HeroBg})` : ""}
         `,
         backgroundSize: "cover",
         backgroundPosition: "center",

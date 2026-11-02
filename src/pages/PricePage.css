@@ -2,11 +2,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
-body, .header-section, .content-container, .event-type-card, .total-cost {
+.price-page, .price-page .header-section, .price-page .content-container, .price-page .event-type-card, .price-page .total-cost {
     font-family: 'Roboto', sans-serif; /* Apply Roboto font across all text on the page */
 }
 
-.header-section {
+.price-page .header-section {
     background-size: cover;
     background-position: center;
     text-align: center;
@@ -17,51 +17,51 @@ body, .header-section, .content-container, .event-type-card, .total-cost {
     font-size: 2.5rem;
 }
 
-.header-section p {
+.price-page .header-section p {
     font-size: 0.9rem; /* Smaller font size for the subtitle */
     margin-top: 5px; /* Space between header and subtitle */
 }
 
-.content-container {
+.price-page .content-container {
     background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for readability */
     padding: 20px;
 }
 
-.event-type-card {
+.price-page .event-type-card {
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     background-color: white;
 }
 
-.event-type-card:hover {
+.price-page .event-type-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.event-type-card.active {
+.price-page .event-type-card.active {
     background-color: #d7e8d5; /* Lighter sage green color for active state */
     color: black;
 }
 
-.slider {
+.price-page .slider {
     transition: opacity 0.4s ease-in-out;
 }
 
-.slider:hover {
+.price-page .slider:hover {
     opacity: 0.8;
 }
 
-.total-cost {
-    animation: fadeIn 0.5s ease-in-out;
+.price-page .total-cost {
+    animation: price-page-fadeIn 0.5s ease-in-out;
     font-size: 1.5rem;
     font-weight: bold;
 }
 
-@keyframes fadeIn {
+@keyframes price-page-fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
-.card:hover {
+.price-page .card:hover {
     transform: scale(1.03);
 }

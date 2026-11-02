@@ -1,24 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import logger from './utils/logger';
 import Navbar from './components/Navbar/Navbar';
-import BlogPage from './pages/BlogPage';
 import Hero from './components/Hero/Hero';
 import HeroCard from './components/HeroCard/HeroCard';
 import ReviewsSection from './components/ReviewSection/ReviewSection';
 import WhoWeAre from './components/HeroCard/WhoWeAre';
 import Footer5 from './components/Footer/Footer5';
-import About from './pages/About';
-import OurWork from './pages/OurWork';
-import Contact from './pages/Contact';
-import Services from './pages/Services';
-import FAQ from './pages/FAQ';
-import PricePage from './pages/PricePage';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import useScrollDirection from './components/Navbar/useScrollDirection';
 import { setMeta } from './utils/meta';
+
+const BlogPage = lazy(() => import('./pages/BlogPage'));
+const About = lazy(() => import('./pages/About'));
+const OurWork = lazy(() => import('./pages/OurWork'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Services = lazy(() => import('./pages/Services'));
+const FAQ = lazy(() => import('./pages/FAQ'));
+const PricePage = lazy(() => import('./pages/PricePage'));
 
 // Logger for route changes
 const RouteLogger = () => {
@@ -31,31 +31,32 @@ const RouteLogger = () => {
 
 // Main App component
 const App = () => {
-  const isNavbarVisible = useScrollDirection();
-
   useEffect(() => {
     logger.info('App component mounted');
     AOS.init({
-      duration: 1200,
+      duration: 400,
+      once: true,
       easing: 'ease-in-out',
     });
-    logger.debug('AOS initialized with duration 1200 and ease-in-out easing');
+    logger.debug('AOS initialized with duration 400 and ease-in-out easing');
   }, []);
 
   return (
     <Router>
       <RouteLogger />
-      <Navbar isVisible={isNavbarVisible} />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/our-work" element={<OurWork />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/faq" element={<FAQ />} />
-        <Route path="/price-page" element={<PricePage />} />
-        <Route path="/blog-page" element={<BlogPage />} />
-      </Routes>
+      <Navbar />
+      <Suspense fallback={<main role="status" className="min-h-screen pt-40 text-center">Loading page…</main>}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/our-work" element={<OurWork />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/price-page" element={<PricePage />} />
+          <Route path="/blog-page" element={<BlogPage />} />
+        </Routes>
+      </Suspense>
     </Router>
   );
 };
@@ -64,7 +65,7 @@ const App = () => {
 class ErrorBoundary extends React.Component {
   state = { hasError: false };
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError() {
     return { hasError: true };
   }
 

@@ -44,6 +44,7 @@ export function NavBar({ items, className, rightSlot }: NavBarProps) {
               <NavLink
                 key={item.name}
                 to={item.url}
+                aria-label={item.name}
                 className={cn(
                   "relative cursor-pointer whitespace-nowrap rounded-full px-4 py-2 text-xs font-semibold text-[#a57a2a] transition-colors hover:text-[#6d4d1f] sm:text-sm",
                   isActive && "bg-[#ead2a1] text-[#5a3e12]"

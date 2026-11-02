@@ -1,4 +1,5 @@
-import React from 'react';
+import useNearViewport from '../../hooks/useNearViewport';
+import background from '../../assets/Location1.webp';
 import './ReviewSection.css';
 
 const reviews = [
@@ -21,8 +22,9 @@ const reviews = [
 ;
 
 const ReviewSection = () => {
+  const { ref, isNear } = useNearViewport();
   return (
-    <section className="reviews-section">
+    <section ref={ref} className="reviews-section" style={{ backgroundImage: isNear ? `url(${background})` : undefined }}>
       <h2 className="text-5xl font-bold text-center mb-8">What Our Clients Say</h2>
       <div className="reviews-marquee">
         <div className="reviews-track">

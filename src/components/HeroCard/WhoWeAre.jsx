@@ -1,10 +1,9 @@
-import React from "react";
+import OptimizedImage from '../OptimizedImage';
 import "./WhoWeAre.css";
 import { CheckCircle2 } from "lucide-react";
-import WhoWeAre1 from "../../assets/WhoWeAre1.jpeg";
-import WhoWeAre2 from "../../assets/WhoWeAre2.jpeg";
-import WhoWeAre3 from "../../assets/WhoWeAre3.jpeg";
-import WhoWeAre4 from "../../assets/WhoWeAre4.png";
+import WhoWeAre1 from "../../assets/WhoWeAre1.webp";
+import WhoWeAre2 from "../../assets/WhoWeAre2.webp";
+import WhoWeAre4 from "../../assets/WhoWeAre4.webp";
 
 
 const gallery = [
@@ -73,8 +72,9 @@ const WhoWeAre = () => {
               key={item.title}
               className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm group aspect-square focus-within:ring-2 focus-within:ring-rose-300 transition-shadow"
             >
-              <img
+              <OptimizedImage
                 src={item.image}
+                sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 400px"
                 alt={item.title}
                 className="absolute inset-0 h-full w-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
                 loading="lazy"

@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { Container, Card, Row, Col } from 'react-bootstrap';
-import { useInView } from 'react-intersection-observer';
+import BlogPostCard from '../components/BlogPostCard';
+import { useEffect, useState } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 import './BlogPage.css'; 
-import image1 from '../assets/OurWorkPagePhotos/21.png';
-import image2 from '../assets/OurWorkPagePhotos/22.png';
-import image3 from '../assets/gifs/1.gif';
-import image4 from '../assets/OurWorkPagePhotos/24.png';
-import image5 from '../assets/OurWorkPagePhotos/25.png';
-import image6 from '../assets/OurWorkPagePhotos/26.png';
+import image1 from '../assets/OurWorkPagePhotos/21.webp';
+import image2 from '../assets/OurWorkPagePhotos/22.webp';
+import image3 from '../assets/gifs/1.webp';
+import image4 from '../assets/OurWorkPagePhotos/24.webp';
+import image5 from '../assets/OurWorkPagePhotos/25.webp';
+import image6 from '../assets/OurWorkPagePhotos/26.webp';
 import { setMeta } from '../utils/meta';
 
 const blogPosts = [
@@ -79,7 +79,7 @@ function BlogPage() {
     };
 
     return (
-        <>
+        <div className="blog-page">
             <Col xs={12}> {/* Takes full width on small screens */}
             <div className="welcome-section">
                 <h1>Welcome to Our Blog</h1>
@@ -87,34 +87,17 @@ function BlogPage() {
             </Col>
             <Container className="mt-5">
                 <Row>
-                    {blogPosts.map((post, index) => {
-                        const { ref, inView } = useInView({
-                            triggerOnce: true,
-                            threshold: 0.1,
-                        });
-                        return (
-                            <Col key={post.id} md={6} lg={4} className="mb-4">
-                                <Card
-                                    className={`bento-item ${inView ? 'reveal' : ''}`}
-                                    ref={ref}
-                                >
-                                    <Card.Img variant="top" src={post.image} />
-                                    <Card.Body>
-                                        <Card.Title>{post.title}</Card.Title>
-                                        <Card.Text>
-                                            {expandedId === post.id ? post.content : post.excerpt}
-                                        </Card.Text>
-                                        <button onClick={() => toggleExpand(post.id)} className="btn btn-primary">
-                                            {expandedId === post.id ? 'Read Less' : 'Read More'}
-                                        </button>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                        );
-                    })}
+                    {blogPosts.map((post) => (
+                        <BlogPostCard
+                            key={post.id}
+                            post={post}
+                            expanded={expandedId === post.id}
+                            onToggle={() => toggleExpand(post.id)}
+                        />
+                    ))}
                 </Row>
             </Container>
-        </>
+        </div>
     );
 }
 

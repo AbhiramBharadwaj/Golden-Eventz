@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Form, Card } from 'react-bootstrap';
 import './PricePage.css'; // Ensure to include CSS for styling and animations
-import backgroundImage from '/src/assets/money.jpg';
+import backgroundImage from '/src/assets/money.webp';
 import { setMeta } from '../utils/meta';
 
 function PricePage() {
@@ -50,7 +50,7 @@ function PricePage() {
     };
 
     return (
-        <div style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh' }}>
+        <div className="price-page" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh' }}>
             <Container fluid className="p-0">
                 <div className="header-section">
                     <h1>Creative Way to Calculate</h1>
